@@ -6,15 +6,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DBHandler {
-    String connectionUrl = "jdbc:mysql://localhost:3306/shop";
+    String connectionUrl = "jdbc:mysql://127.0.0.1:3306/shop";
     String user = "root";
-    String pass = "Qwerty123456";
+    String pass = "Arinas!23";
 
     private static Connection connection;
     public DBHandler(){
         try {
             connection = DriverManager.getConnection(connectionUrl, user, pass);
-            System.out.println("Connection database successfull");
+            System.out.println("Connection database successfully");
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Error connecting to database");

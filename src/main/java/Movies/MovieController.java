@@ -3,12 +3,12 @@ package Movies;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MovieDao {
-    MovieRepository movieRepository = new MovieRepository();
+public class MovieController {
+    MovieDAOImpl movieDAO = new MovieDAOImpl();
 
     public String createTable() {
         try {
-            movieRepository.createTable();
+            movieDAO.createTable();
             return "Table created successfully";
         } catch (SQLException e) {
             e.printStackTrace();
@@ -20,7 +20,7 @@ public class MovieDao {
     public  String deleteTable() {
 
         try {
-            movieRepository.deleteTable();
+            movieDAO.deleteTable();
             return "Table deleted successfully";
         } catch (SQLException e) {
             e.printStackTrace();
@@ -31,16 +31,16 @@ public class MovieDao {
     }
     public String createMovie(Movie movie) {
         try {
-            movieRepository.create(movie);
+            movieDAO.create(movie);
             return "Movie created successfully";
         } catch (SQLException e) {
             e.printStackTrace();
             return "Error creating movie";
         }
     }
-    public Movie findProduct(int id) {
+    public Movie findMovie(int id) {
         try {
-            return movieRepository.findMovieById(id);
+            return movieDAO.findMovieById(id);
         } catch (SQLException e) {
             System.out.println("Can not find movie with id:" + id);
             e.printStackTrace();
@@ -49,9 +49,25 @@ public class MovieDao {
     }
     public void deleteMovie (int id){
         try{
-            movieRepository.delete(id);
+            movieDAO.delete(id);
             System.out.println("Movie deleted successfully");
         }catch(SQLException e){
+            System.out.println(e);
+        }
+    }
+    public ArrayList<Movie> getAllMovies(){
+        try {
+            return movieDAO.getAll();
+        } catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public void updateMovie(Movie movie){
+        try {
+            movieDAO.updateTitle(movie);
+            System.out.println("Movie title updated successfully");
+        }catch (SQLException e){
             System.out.println(e);
         }
     }
