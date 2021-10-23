@@ -6,9 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DBHandler {
-    String connectionUrl = "jdbc:mysql://127.0.0.1:3306/shop";
+    String connectionUrl = "jdbc:mysql://localhost:3306/shop";
     String user = "root";
-    String pass = "Arinas!23";
+    String pass = "";
 
     private static Connection connection;
     public DBHandler(){
